@@ -1,0 +1,8 @@
+a {
+  color: #caf0f8;
+}
+
+a:hover,
+.active-link {
+  color: #00b4d8;
+}

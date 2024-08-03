@@ -1,0 +1,42 @@
+<section class="porductOverview">
+  <div class="currDirectory">
+    <p>Products</p>
+    <i class="bx bx-chevron-right"></i>
+    <p>{{ productData.category }}</p>
+    <i class="bx bx-chevron-right"></i>
+    <p>{{ productData.title }}</p>
+  </div>
+  <div class="productEssintials">
+    <div class="productImages">
+      <aside>
+        @for (img of productData.images; track $index) {
+        <button (click)="sidePhotoClickHandler(img)">
+          <img [src]="img" alt="" />
+        </button>
+        }
+      </aside>
+      <div class="mainImageContainer">
+        <img class="mainImage" [src]="mainPhoto" alt="" />
+      </div>
+    </div>
+    <div class="productInfo">
+      <div>
+        <h2 class="productName">{{ productData.title }}</h2>
+        <h2 class="price">$ {{ productData.price }}</h2>
+        <h3 class="description">{{ productData.description }}</h3>
+      </div>
+      <form class="numberOfItems">
+        <div class="quantity">
+          <button class="op" (click)="operationBtnHandler($event, '-')">
+            -
+          </button>
+          <div class="qun">{{ quantity }}</div>
+          <button class="op" (click)="operationBtnHandler($event, '+')">
+            +
+          </button>
+        </div>
+        <button class="addBtn">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+</section>

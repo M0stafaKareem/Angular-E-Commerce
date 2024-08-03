@@ -1,0 +1,21 @@
+<div
+  class="container"
+  [ngStyle]="{ 'background-image': 'url(' + productImg + ')' }"
+  (click)="showSingleProduct()"
+>
+  <div class="overlay">
+    <div class="items"></div>
+    <div class="items head">
+      <p>{{ productName }}</p>
+      <hr />
+    </div>
+    <div class="items price">
+      <p class="old">${{ productOldPrice }}</p>
+      <p class="new">${{ productPrice }}</p>
+    </div>
+    <div class="items cart">
+      <i class="fa fa-shopping-cart"></i>
+      <span>ADD TO CART</span>
+    </div>
+  </div>
+</div>

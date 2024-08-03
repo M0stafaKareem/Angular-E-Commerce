@@ -1,0 +1,11 @@
+<div class="container d-flex flex-wrap gap-5 mt-5 justify-content-evenly">
+  @for (item of products; track $index) {
+  <app-product-card
+    [productImg]="item.images[0]"
+    [productName]="item.title"
+    [productOldPrice]="item.price * item.discountPercentage"
+    [productPrice]="item.price"
+    [productId]="item.id"
+  ></app-product-card>
+  }
+</div>
