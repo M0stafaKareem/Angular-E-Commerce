@@ -11,6 +11,7 @@
       <form>
         <label for="chk" aria-hidden="true">Sign up</label>
         <input
+          [formControl]="fullNameInput"
           class="py-3"
           type="text"
           name="txt"
@@ -19,30 +20,32 @@
         />
         <input
           class="py-3"
+          [formControl]="emailInput"
           type="email"
           name="email"
           placeholder="Email"
           required=""
         />
         <input
+          [formControl]="telInput"
           class="py-3"
           type="text"
-          name="broj"
           placeholder="Mobile Number"
         />
         <input
           class="py-3"
+          [formControl]="passwordInput"
           type="password"
           name="pswd"
           placeholder="Password"
           required=""
         />
-        <button>Sign up</button>
+        <button (click)="signUpClickHandler($event)">Sign up</button>
       </form>
     </div>
 
     <div class="login">
-      <form>
+      <form #registerForm="ngForm">
         <label for="chk" aria-hidden="true">Login</label>
         <input
           class="py-4"
@@ -50,14 +53,17 @@
           name="email"
           placeholder="Email"
           required=""
+          [(ngModel)]="loginEmail"
         />
         <input
           class="py-4"
           type="password"
+          name="password"
           placeholder="Password"
           required=""
+          [(ngModel)]="loginPassword"
         />
-        <button>Login</button>
+        <button (click)="loginClickHandler()">Login</button>
       </form>
     </div>
   </div>
