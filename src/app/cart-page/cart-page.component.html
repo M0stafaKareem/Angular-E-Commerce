@@ -1,1 +1,61 @@
-<p>cart-page works!</p>
+<div class="wrap cf">
+  <div class="heading cf">
+    <h1>My Cart</h1>
+    <a routerLink="/" class="continue">Continue Shopping</a>
+  </div>
+
+  <div class="cart">
+    <ul class="cartWrap">
+      @for (item of cartItems; track $index) {
+      <li class="items odd">
+        <div class="infoWrap">
+          <div class="cartSection">
+            <img [src]="item.productImage" alt="item Image" class="itemImg" />
+            <p class="itemNumber">{{ item.productCode }}</p>
+            <h3>{{ item.productName }}</h3>
+
+            <p>
+              <input
+                type="text"
+                class="qty"
+                [value]="item.productQuantity"
+                disabled
+              />
+              x ${{ item.productPrice }}
+            </p>
+
+            <p class="stockStatus">In Stock</p>
+          </div>
+
+          <div class="prodTotal cartSection">
+            <p>${{ item.productPrice }}</p>
+          </div>
+          <div class="cartSection removeWrap">
+            <a class="remove" (click)="removeItemFromCart(item.productId)">x</a>
+          </div>
+        </div>
+      </li>
+      }@empty {
+      <h1 class="display-4 position-absolute m-5">There Are no Products</h1>
+      }
+    </ul>
+  </div>
+
+  <div class="subtotal cf">
+    <ul>
+      <li class="totalRow">
+        <span class="label">Subtotal</span
+        ><span class="value">$ {{ subTotal }}</span>
+      </li>
+
+      <li class="totalRow">
+        <span class="label">Tax</span><span class="value">$ {{ tax }}</span>
+      </li>
+      <li class="totalRow">
+        <span class="label">Total</span
+        ><span class="value">$ {{ subTotal + tax }}</span>
+      </li>
+    </ul>
+    <a class="btn continue mt-3" href="#">Checkout</a>
+  </div>
+</div>

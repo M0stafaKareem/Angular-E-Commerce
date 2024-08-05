@@ -1,6 +1,7 @@
 import { NgStyle } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from '../../../Services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './product-card.component.css',
 })
 export class ProductCardComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cartService: CartService) {}
 
   @Input() productId: number = 11;
   @Input() productOldPrice!: number;
@@ -23,5 +24,19 @@ export class ProductCardComponent {
   }
   showSingleProduct() {
     this.router.navigate(['/all-products/', this.productId]);
+  }
+
+  addToCartHandler(event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    this.cartService.addItemToCart({
+      productCode: 'abcd',
+      productId: this.productId,
+      productImage: this.productImg,
+      productName: this.productName,
+      productPrice: this.productPrice,
+      productQuantity: 1,
+    });
   }
 }

@@ -1,4 +1,4 @@
-.container {
+#container {
   width: 300px;
   height: 400px;
   background: url("https://i.pinimg.com/564x/6f/5a/b1/6f5ab1b470beeeeaf285bb451c63ac8f.jpg");
@@ -14,7 +14,7 @@
 .overlay {
   width: 100%;
   height: 100%;
-
+  border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr 2fr 1fr;
@@ -67,6 +67,7 @@
 }
 
 .cart {
+  position: relative;
   font-size: 12px;
   opacity: 0;
   letter-spacing: 1px;
@@ -76,12 +77,22 @@
   i {
     font-size: 16px;
   }
-  span {
-    margin-left: 10px;
-  }
+}
+.cart button {
+  background-color: rgba(255, 255, 255, 0.2);
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 15px;
+  letter-spacing: 1px;
+  margin-left: 50%;
+}
+.cart button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-.container:hover .overlay {
+#container:hover .overlay {
   opacity: 1;
   & .head {
     transform: translateY(0px);

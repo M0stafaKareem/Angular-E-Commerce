@@ -1,11 +1,11 @@
 <div
-  class="container"
+  id="container"
   [ngStyle]="{ 'background-image': 'url(' + productImg + ')' }"
   (click)="showSingleProduct()"
 >
   <div class="overlay">
     <div class="items"></div>
-    <div class="items head">
+    <div class="items head px-2">
       <p>{{ productName }}</p>
       <hr />
     </div>
@@ -14,8 +14,7 @@
       <p class="new">${{ productPrice }}</p>
     </div>
     <div class="items cart">
-      <i class="fa fa-shopping-cart"></i>
-      <span>ADD TO CART</span>
+      <button (click)="addToCartHandler($event)">ADD TO CART</button>
     </div>
   </div>
 </div>
