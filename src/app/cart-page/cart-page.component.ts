@@ -19,18 +19,21 @@ export class CartPageComponent {
   ngOnInit(): void {
     this.cartService.currentMessage.subscribe((items: cartItem[]) => {
       this.cartItems = items;
+      this.calculateTotal();
     });
-    this.calculateTotal();
   }
 
   calculateTotal() {
     this.subTotal = 0;
     this.cartService.cartItems.forEach(
       (item: any) =>
-        (this.subTotal = Math.round(this.subTotal + item.productPrice))
+        (this.subTotal = Math.round(
+          this.subTotal + item.productPrice * item.productQuantity
+        ))
     );
     this.tax = Math.round(this.subTotal * 0.14);
   }
+
   removeItemFromCart(itemId: number) {
     this.cartService.removeItemFromCart(itemId);
     this.calculateTotal();

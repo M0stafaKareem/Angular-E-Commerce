@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { singleProduct } from '../../../shared/product.interface';
+import { CartService } from '../../../Services/cart.service';
 
 @Component({
   selector: 'app-prduct-details',
@@ -9,6 +10,8 @@ import { singleProduct } from '../../../shared/product.interface';
   styleUrl: './prduct-details.component.css',
 })
 export class PrductDetailsComponent {
+  constructor(private cartService: CartService) {}
+
   @Input() productData!: singleProduct;
 
   mainPhoto: string = '';
@@ -30,4 +33,17 @@ export class PrductDetailsComponent {
       this.quantity = this.quantity + 1;
     }
   };
+  addToCartHandler(event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    this.cartService.addItemToCart({
+      productCode: 'abcd',
+      productId: this.productData.id,
+      productImage: this.productData.images[0],
+      productName: this.productData.title,
+      productPrice: this.productData.price,
+      productQuantity: this.quantity,
+    });
+  }
 }
